@@ -1,0 +1,51 @@
+
+rule "Cold room 1 temperature warning"
+when
+    Item ColdRoom1_Temperature changed
+then
+    if (ColdRoom1_Temperature.state instanceof Number) {
+        val temp = (ColdRoom1_Temperature.state as Number).doubleValue
+        if (temp > 8) {
+            logWarn("coldstorage", "CRITICAL: Cold room 1 temperature above 8 C: {}", ColdRoom1_Temperature.state)
+        } else if (temp > 5) {
+            logInfo("coldstorage", "WARNING: Cold room 1 temperature above 5 C: {}", ColdRoom1_Temperature.state)
+        }
+    }
+end
+
+rule "Cold room 2 temperature warning"
+when
+    Item ColdRoom2_Temperature changed
+then
+    if (ColdRoom2_Temperature.state instanceof Number) {
+        val temp = (ColdRoom2_Temperature.state as Number).doubleValue
+        if (temp > 8) {
+            logWarn("coldstorage", "CRITICAL: Cold room 2 temperature above 8 C: {}", ColdRoom2_Temperature.state)
+        } else if (temp > 5) {
+            logInfo("coldstorage", "WARNING: Cold room 2 temperature above 5 C: {}", ColdRoom2_Temperature.state)
+        }
+    }
+end
+
+rule "Cold room 3 temperature warning"
+when
+    Item ColdRoom3_Temperature changed
+then
+    if (ColdRoom3_Temperature.state instanceof Number) {
+        val temp = (ColdRoom3_Temperature.state as Number).doubleValue
+        if (temp > 8) {
+            logWarn("coldstorage", "CRITICAL: Cold room 3 temperature above 8 C: {}", ColdRoom3_Temperature.state)
+        } else if (temp > 5) {
+            logInfo("coldstorage", "WARNING: Cold room 3 temperature above 5 C: {}", ColdRoom3_Temperature.state)
+        }
+    }
+end
+
+rule "Cold room door warning"
+when
+    Item ColdRoom1_Door changed to ON or
+    Item ColdRoom2_Door changed to ON or
+    Item ColdRoom3_Door changed to ON
+then
+    logWarn("coldstorage", "WARNING: A cold room door has been opened")
+end

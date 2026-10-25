@@ -1,0 +1,9 @@
+Number:Temperature ColdRoom1_Temperature "Холодильна кімната 1 [%.1f °C]" { channel="mqtt:topic:coldbroker:coldroom1:temperature" }
+Switch ColdRoom1_Door "Двері кімнати 1" { channel="mqtt:topic:coldbroker:coldroom1:door" }
+Switch ColdRoom1_Alarm "Тривога кімнати 1" { channel="mqtt:topic:coldbroker:coldroom1:alarm" }
+Number:Temperature ColdRoom2_Temperature "Холодильна кімната 2 [%.1f °C]" { channel="mqtt:topic:coldbroker:coldroom2:temperature" }
+Switch ColdRoom2_Door "Двері кімнати 2" { channel="mqtt:topic:coldbroker:coldroom2:door" }
+Switch ColdRoom2_Alarm "Тривога кімнати 2" { channel="mqtt:topic:coldbroker:coldroom2:alarm" }
+Number:Temperature ColdRoom3_Temperature "Холодильна кімната 3 [%.1f °C]" { channel="mqtt:topic:coldbroker:coldroom3:temperature" }
+Switch ColdRoom3_Door "Двері кімнати 3" { channel="mqtt:topic:coldbroker:coldroom3:door" }
+Switch ColdRoom3_Alarm "Тривога кімнати 3" { channel="mqtt:topic:coldbroker:coldroom3:alarm" }

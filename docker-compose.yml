@@ -1,0 +1,46 @@
+services:
+  mosquitto:
+    image: eclipse-mosquitto:2
+    container_name: cold-mosquitto-simple
+    ports:
+      - "1883:1883"
+    volumes:
+      - ./mosquitto/config:/mosquitto/config:ro
+      - mosquitto_data:/mosquitto/data
+    restart: unless-stopped
+
+  simulator:
+    build: ./simulator
+    container_name: cold-simulator-simple
+    depends_on:
+      - mosquitto
+    environment:
+      MQTT_HOST: mosquitto
+      MQTT_PORT: "1883"
+      PUBLISH_INTERVAL: "5"
+    restart: unless-stopped
+
+  openhab:
+    image: openhab/openhab:4.3.6
+    container_name: cold-openhab-simple
+    depends_on:
+      - mosquitto
+    ports:
+      - "8080:8080"
+      - "8443:8443"
+    environment:
+      USER_ID: "1000"
+      GROUP_ID: "1000"
+      CRYPTO_POLICY: "unlimited"
+      EXTRA_JAVA_OPTS: "-Duser.timezone=Europe/Kyiv"
+    volumes:
+      - openhab_addons:/openhab/addons
+      - openhab_conf:/openhab/conf
+      - openhab_userdata:/openhab/userdata
+    restart: unless-stopped
+
+volumes:
+  mosquitto_data:
+  openhab_addons:
+  openhab_conf:
+  openhab_userdata:

@@ -1,0 +1,20 @@
+Bridge mqtt:broker:coldbroker "Cold Storage MQTT" [ host="mosquitto", port=1883, secure=false ] {
+    Thing topic coldroom1 "Cold Room 1" {
+        Channels:
+            Type number : temperature "Temperature" [ stateTopic="warehouse/coldroom1/telemetry", transformationPattern="JSONPATH:$.temperature_c" ]
+            Type switch : door "Door" [ stateTopic="warehouse/coldroom1/telemetry", transformationPattern="JSONPATH:$.door_open", on="true", off="false" ]
+            Type switch : alarm "Alarm" [ stateTopic="warehouse/coldroom1/telemetry", transformationPattern="JSONPATH:$.alarm", on="true", off="false" ]
+    }
+    Thing topic coldroom2 "Cold Room 2" {
+        Channels:
+            Type number : temperature "Temperature" [ stateTopic="warehouse/coldroom2/telemetry", transformationPattern="JSONPATH:$.temperature_c" ]
+            Type switch : door "Door" [ stateTopic="warehouse/coldroom2/telemetry", transformationPattern="JSONPATH:$.door_open", on="true", off="false" ]
+            Type switch : alarm "Alarm" [ stateTopic="warehouse/coldroom2/telemetry", transformationPattern="JSONPATH:$.alarm", on="true", off="false" ]
+    }
+    Thing topic coldroom3 "Cold Room 3" {
+        Channels:
+            Type number : temperature "Temperature" [ stateTopic="warehouse/coldroom3/telemetry", transformationPattern="JSONPATH:$.temperature_c" ]
+            Type switch : door "Door" [ stateTopic="warehouse/coldroom3/telemetry", transformationPattern="JSONPATH:$.door_open", on="true", off="false" ]
+            Type switch : alarm "Alarm" [ stateTopic="warehouse/coldroom3/telemetry", transformationPattern="JSONPATH:$.alarm", on="true", off="false" ]
+    }
+}

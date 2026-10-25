@@ -1,0 +1,19 @@
+rule "Cold room 1 temperature warning"
+when
+    Item ColdRoom1_Temperature changed
+then
+    if (ColdRoom1_Temperature.state instanceof Number && (ColdRoom1_Temperature.state as Number).doubleValue > 8) {
+        logWarn("coldstorage", "КРИТИЧНО: температура кімнати 1 вище 8 °C: {}", ColdRoom1_Temperature.state)
+    } else if (ColdRoom1_Temperature.state instanceof Number && (ColdRoom1_Temperature.state as Number).doubleValue > 5) {
+        logInfo("coldstorage", "Попередження: температура кімнати 1 вище 5 °C: {}", ColdRoom1_Temperature.state)
+    }
+end
+
+rule "Cold room door warning"
+when
+    Item ColdRoom1_Door changed to ON or
+    Item ColdRoom2_Door changed to ON or
+    Item ColdRoom3_Door changed to ON
+then
+    logWarn("coldstorage", "Відкрито двері холодильної кімнати")
+end

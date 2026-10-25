@@ -169,6 +169,12 @@ docker exec cold-openhab-simple bash -lc grep -i coldstorage /openhab/userdata/l
 Для перевірки аварійного правила має відбутися реальне перевищення порога й зміна відповідного Item.
 
 ## Скріншоти
+<img width="1917" height="807" alt="image" src="https://github.com/user-attachments/assets/5b350f4f-92fd-4969-a790-553f23e2e6c6" />
+<img width="967" height="547" alt="image" src="https://github.com/user-attachments/assets/b5ea8c79-da4c-4292-8a73-d4f518bd4770" />
+<img width="1917" height="710" alt="image" src="https://github.com/user-attachments/assets/b2981206-54fb-4fdc-89b8-0e81f9388830" />
+<img width="1917" height="837" alt="image" src="https://github.com/user-attachments/assets/4a569746-c025-4172-8071-2643b6302aad" />
+<img width="1290" height="357" alt="image" src="https://github.com/user-attachments/assets/2439155b-5da2-4a27-8cb1-aab26594ed0b" />
+
 
 
 ## Основні файли проєкту
